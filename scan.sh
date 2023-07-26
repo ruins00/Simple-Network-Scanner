@@ -1,14 +1,12 @@
 #!/bin/bash
 
-if [ "$#"  -eq "0" ]
+if [ "$1"  -eq ""]
 then
-echo "Scanning Local Network 192.168.0.0/24"
-declare hh=192.168.0
+echo "You forgot an IP address"
+echo "Syntax : ./try.sh 192.169.1"
 
 else
-declare hh=$1
-fi
-
 for ip in `seq 1 254`; do
-ping -c 1 $hh.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
 done
+fi
